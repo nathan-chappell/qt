@@ -125,7 +125,7 @@ public:
 
     void setDevice(QIODevice* dev);
 
-    void beginSectionOutline(const QString &text, const QString &anchor);
+    void beginSectionOutline(const QString &text, const QString &anchor, bool bold, bool red);
     void endSectionOutline();
 
     void setProperty(PrintEnginePropertyKey key, const QVariant &value);
@@ -151,10 +151,14 @@ public:
         uint obj;
         QString text;
         QString anchor;
+        // EDIT
+        bool bold;
+        bool red;
+        //
         
-        OutlineItem(const QString &t, const QString &a): 
+        OutlineItem(const QString &t, const QString &a, bool bold = false, bool red = false): 
             parent(NULL), next(NULL), prev(NULL), firstChild(NULL), lastChild(NULL),
-            obj(0), text(t), anchor(a) {}
+            obj(0), text(t), anchor(a), bold(bold), red(red) {}
         ~OutlineItem() {
             OutlineItem *i = firstChild;
             while(i != NULL) { 

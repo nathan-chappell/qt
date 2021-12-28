@@ -521,6 +521,12 @@ void QPdfEnginePrivate::writeOutlineChildren(OutlineItem * node) {
            xprintf("  /First %d 0 R\n", i->firstChild->obj);
        if (i->lastChild)
            xprintf("  /Last %d 0 R\n", i->lastChild->obj);
+       // EDIT
+       if (i->bold)
+           xprintf("  /F 2");
+       if (i->red)
+           xprintf("  /C [1.0 0.0 0.0]");
+       //
        xprintf(">>\n"
                "endobj\n");
     }
@@ -1531,7 +1537,7 @@ void QPdfEngine::addAnchor(const QRectF &r, const QString &name)
     d->anchors[name] = anchor;
 }
 
-void QPdfEngine::beginSectionOutline(const QString &text, const QString &anchor)
+void QPdfEngine::beginSectionOutline(const QString &text, const QString &anchor, bool bold = false, bool red = false)
 {
     Q_D(QPdfEngine);
     if (d->outlineCurrent == NULL) {
@@ -1540,7 +1546,7 @@ void QPdfEngine::beginSectionOutline(const QString &text, const QString &anchor)
         d->outlineCurrent = d->outlineRoot = new QPdfEnginePrivate::OutlineItem(QString(), QString());
     }
 
-    QPdfEnginePrivate::OutlineItem *i = new QPdfEnginePrivate::OutlineItem(text, anchor);
+    QPdfEnginePrivate::OutlineItem *i = new QPdfEnginePrivate::OutlineItem(text, anchor, bold, red);
     i->parent = d->outlineCurrent;
     i->prev = d->outlineCurrent->lastChild;
     if (d->outlineCurrent->firstChild)

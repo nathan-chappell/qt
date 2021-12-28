@@ -147,7 +147,7 @@ public:
     enum PrinterOption { PrintToFile, PrintSelection, PrintPageRange };
 #endif // QT3_SUPPORT
 
-    void beginSectionOutline(const QString &text, const QString &anchor);
+    void beginSectionOutline(const QString &text, const QString &anchor, bool bold, bool red);
     void endSectionOutline();
 
     void setOutputFormat(OutputFormat format);

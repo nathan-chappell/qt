@@ -948,10 +948,10 @@ void QPrinter::setOutputFileName(const QString &fileName)
 
     \since 4.7
 */
-void QPrinter::beginSectionOutline(const QString &name, const QString &anchor)
+void QPrinter::beginSectionOutline(const QString &name, const QString &anchor, bool bold, bool red)
 {
     Q_D(QPrinter);
-    d->printEngine->beginSectionOutline(name, anchor);
+    d->printEngine->beginSectionOutline(name, anchor, bold, red);
 }
 
 /*!
