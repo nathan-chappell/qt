@@ -102,7 +102,7 @@ public:
 
     virtual bool newPage() = 0;
     virtual void beginSectionOutline(const QString &text, const QString &anchor) {Q_UNUSED(text); Q_UNUSED(anchor);}
-    virtual void beginSectionOutline(const QString &text, const QString &anchor, bool bold, bool red) {Q_UNUSED(text); Q_UNUSED(anchor);}
+    virtual void beginSectionOutline(const QString &text, const QString &anchor, bool bold, bool italic, double r, double g, double b) {Q_UNUSED(text); Q_UNUSED(anchor);}
     virtual void endSectionOutline() {}
     virtual bool abort() = 0;
 
